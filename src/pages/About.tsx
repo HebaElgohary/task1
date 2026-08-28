@@ -2,6 +2,9 @@ import React from 'react'
 
 export default function About() {
   return (
-    <div>About</div>
+    <>
+    <section className='flex justify-center items-center min-h-[60vh] ' >About page </section>
+    
+    </>
   )
 }
