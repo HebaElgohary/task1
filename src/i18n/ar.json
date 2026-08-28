@@ -2,7 +2,7 @@
 {
   "header": {
     "logo": "الشعار",
-    "lists": {
+    "list": {
       "home": "الرئيسية",
       "about": "من نحن",
       "contact": "تواصل معنا"
