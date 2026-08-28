@@ -7,5 +7,13 @@
             "contact":"Contact"
         },
         "loginBtn":"Login"
+    },
+    "login":{
+        "title":"Login Form",
+        "emailLabel":"Email",
+        "emailPlaceholder":"Enter your Email",
+        "passwordLabel":"Password",
+        "passwordPlaceholder":"Enter your Password",
+        "loginBtn":"Login"
     }
 }

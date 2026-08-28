@@ -6,6 +6,7 @@
 
   --background: #ffffff;
   --background-secondary: #f8fafc;
+  --bg-form: #eae7ef;
 
   --text-main: #ffffff;
   --text: #1e293b;
@@ -20,7 +21,7 @@
 
   --color-background: var(--background);
   --color-background-secondary: var(--background-secondary);
-
+  --color-form:var(--bg-form);
   --color-text: var(--text);
   --color-text-main: var(--text-main);
 
