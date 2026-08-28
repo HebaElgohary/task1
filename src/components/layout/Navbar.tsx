@@ -12,10 +12,10 @@ export default function Navbar() {
     { id: 2, path: routes.CONTACT, name: t("header.list.contact") },
   ];
   return (
-    <header className="">
-      <h1>{t('header.logo')}</h1>
-      <nav>
-        <ul>
+    <header className="flex flex-row justify-between !p-5">
+      <h1 className="text-3xl font-semibold">{t('header.logo')}</h1>
+      <nav className="flex justify-between gap-11 items-center ">
+        <ul className="flex gap-5">
           {list.map((l) => (
             <li key={l.id}>
               <NavLink to={l.path}>{l.name}</NavLink>{" "}
@@ -23,7 +23,7 @@ export default function Navbar() {
           ))}
         </ul>
         <NavLink to={routes.LOGIN}>
-          <Button>{t("header.loginBtn")}</Button>
+          <Button >{t("header.loginBtn")}</Button>
         </NavLink>
       </nav>
     </header>

@@ -6,8 +6,9 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{
     className?:string
     
 }
+
 export default function Button({children,className,...props}:ButtonProps) {
   return (
-<button className={cn(`!px-3 !py-1 `,className)} {...props} >{children}</button>
+<button className={cn(`!px-3 !py-1 bg-primary rounded-lg text-text-main `,className)} {...props} >{children}</button>
   )
 }
