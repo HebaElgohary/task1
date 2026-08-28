@@ -1,0 +1,11 @@
+{
+    "header":{
+        "logo":"Logo",
+        "list":{
+            "home":"Home",
+            "about":"About",
+            "contact":"Contact"
+        },
+        "loginBtn":"Login"
+    }
+}
