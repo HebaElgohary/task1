@@ -8,11 +8,12 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{
     variant?:'primary'|'secondary'|'danger' |'none'
     disabled?:boolean,
     size?:'sm'|'md'|'lg'
+    fill?:boolean
 
     
 }
 
-export default function Button({children,className,disabled,onClick,variant='primary',size='md',...props}:ButtonProps) {
+export default function Button({children,className,disabled,onClick,variant='primary',size='md',fill=false,...props}:ButtonProps) {
  const variants={
   primary:"bg-primary",
   secondary:"bg-secondary",
@@ -21,13 +22,13 @@ export default function Button({children,className,disabled,onClick,variant='pri
  }
 
   const sizes={
-  sm:" !px-4 !py-1",
-  md:" !px-6 !py-2",
+  sm:"  !px-4 !py-2",
+  md:"  !px-6 !py-2",
   lg:" !px-8 !py-3",
  }
  
 
  return (
-<button disabled={disabled} onClick={onClick}  className={cn(`!px-3 !py-1 bg-primary rounded-lg text-text-main ${disabled?'opacity-30':''} `,variants[variant], sizes[size],className)} {...props} >{children}</button>
+<button disabled={disabled} onClick={onClick}  className={cn(`!px-3 !py-1 bg-primary rounded-lg text-text-main ${disabled?'opacity-30':''} `,variants[variant], sizes[size],`${fill?'w-full':'w-fit'}`,className)} {...props} >{children}</button>
   )
 }

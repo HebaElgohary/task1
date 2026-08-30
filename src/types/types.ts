@@ -3,4 +3,10 @@ export   interface IFormData{
     password:string
   }
 
+  export type PostType={
+        userId:number
+    id:number
+    title:string
+    body:string
+  }
   

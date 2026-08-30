@@ -1,47 +1,44 @@
-import React from 'react'
-import Card from '../../../components/ui/Card'
+import React from "react";
 
+import Card from "../../../components/ui/Card";
+import { useGetAllPosts } from "../hooks/useGetAllPosts";
+import ErrorMsg from "../../../components/common/ErrorMsg";
+import CardSkeleton from "../../../components/skeleton/CardSkeleton";
+import type { PostType } from "../../../types/types";
 
-const posts=[{
-"userId": 1,
-"id": 1,
-"title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-"body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
-}
-,
-{
-"userId": 2,
-"id": 2,
-"title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-"body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
-}
-
-,
-{
-"userId": 3,
-"id": 3,
-"title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-"body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
-},
-{
-"userId": 4,
-"id": 4,
-"title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-"body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
-}
-
-]
 export default function Posts() {
-  return (
-    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5'>
-{
-    posts.map((post)=>
-        <Card title={post.title} description={post.body}>
-          
-        </Card>
-    )
-}
+  const {
+    data,
+    isLoading,
+    isError,
+    error,
+  } = useGetAllPosts();
 
+  if (isLoading) {
+    return (
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
+        {Array.from({ length: 8 }).map(() => (
+          <CardSkeleton  />
+        ))}
+      </div>
+    );
+  }
+
+  if (isError) {
+    return (
+ <ErrorMsg error={error}></ErrorMsg>
+    );
+  }
+
+  return (
+    <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
+      {data?.map((post:PostType) => (
+        <Card
+          key={post.id}
+          title={post.title}
+          description={post.body}
+        />
+      ))}
     </div>
-  )
+  );
 }

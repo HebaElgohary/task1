@@ -1,6 +1,5 @@
-import img2  from './2.svg'
-import img3  from './3.svg'
-import img4  from './4.svg'
-import img5  from './5.svg'
+import img2  from './education1.png'
+import img3  from './education1.png'
 
-export{img2,img3,img4,img5}
+
+export{img2,img3}
