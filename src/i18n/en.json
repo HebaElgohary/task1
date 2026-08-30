@@ -15,5 +15,17 @@
         "passwordLabel":"Password",
         "passwordPlaceholder":"Enter your Password",
         "loginBtn":"Login"
+    },
+       "home":{
+        "title":"Home page"
+   
+    },
+        "about":{
+        "title":"About page"
+   
+    },
+        "contact":{
+        "title":"Contact page"
+   
     }
 }
