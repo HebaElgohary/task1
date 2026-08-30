@@ -5,14 +5,14 @@
   --secondary: #05b586;
 
   --background: #ffffff;
-  --background-secondary: #f8fafc;
+  --background-secondary: #f8f8fc;
   --bg-form: #eae7ef;
 
   --text-main: #ffffff;
   --text: #1e293b;
   --text-secondary: #64748b;
 
-  --border: #e2e8f0;
+  --border: #d9d4e6;
 }
 
 @theme {

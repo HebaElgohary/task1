@@ -10,25 +10,44 @@ export default function About() {
   
   return (
     <>
-    <section className='flex flex-col   !px-5 md:!px-11 lg:!px-22 min-h-[85vh] bg-background-secondary' >
-         <Title>{t('about.title')}</Title>
-    <Card className='w-full md:w-1/3 !mt-11' title='first card' description='This is first card description' image={img2}>
-     <div className='flex gap-4'>
-      <Button size='sm'> first btn</Button>
-      <Button size='sm' variant='danger'> second btn</Button>
-      </div>
-    </Card>
+ <section className="min-h-[85vh] bg-background-secondary !px-5 !pt-6 md:!px-11 lg:!px-22">
+  <div className="flex flex-col gap-3">
+    <Title>{t("about.title")}</Title>
 
-      <Card className='w-full md:w-1/3 !mt-11' title='second card' description='This is second card description' image={img2}>
-      <div className='flex flex-col gap-4'>
-      <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempora vel iure, culpa quasi quod error saepe dolorum veritatis, consequatur voluptatum quas dolorem repellat rem, minus inventore eveniet facilis debitis.</p>
-      <Button size='md' variant='secondary'> more</Button> 
-      
-      </div>
+    <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-4">
+      <Card
+        className="!mt-11"
+        title="first card"
+        description="This is first card description"
+        image={img2}
+      >
+        <div className="flex gap-4">
+          <Button size="sm">first btn</Button>
+          <Button size="sm" variant="danger">
+            second btn
+          </Button>
+        </div>
+      </Card>
 
-     
-    </Card>
-     </section>
+      <Card
+        className="!mt-11"
+        title="second card"
+        description="This is second card description"
+        // image={img2}
+      >
+        <div className="flex flex-col gap-4">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, sapiente odit perspiciatis quisquam tenetur mollitia. Obcaecati numquam accusamus provident odio iusto non quod magni, debitis fugiat saepe aspernatur excepturi tempora!.
+          </p>
+
+          <Button size="md" variant="secondary">
+            more
+          </Button>
+        </div>
+      </Card>
+    </div>
+  </div>
+</section>
     </>
   )
 }

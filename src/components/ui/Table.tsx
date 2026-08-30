@@ -1,3 +1,4 @@
+import { cn } from "../../utils/cn";
 
 
 type row= string[]
@@ -7,6 +8,7 @@ interface TableProps{
   data: row[];
   striped?: boolean;
   title?:string
+  className?:string
 }
 
 export default function Table({
@@ -14,12 +16,13 @@ export default function Table({
   columns,
   data,
   striped = false,
+  className=''
 }: TableProps) {
   return (
-    <div className="w-full overflow-x-auto ">
+    <div className={cn("w-full overflow-x-auto  ",className)}>
       <h3 className="text-2xl text-primary font-semibold !mb-2 ">{title}</h3>
       <table className="w-full border-collapse border border-border ">
-        <thead>
+        <thead className="">
           <tr className="bg-form">
             {columns.map((column) => (
               <th

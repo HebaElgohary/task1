@@ -1,29 +1,49 @@
-import React, { type ReactNode } from 'react'
-import { cn } from '../../utils/cn'
+import React, { type ReactNode } from "react";
+import { cn } from "../../utils/cn";
 
-interface CardProps{
-    title:string
-    description:string
-    image?:string
-    children?:ReactNode
-    className?:string
+interface CardProps {
+  title: string;
+  description: string;
+  image?: string;
+  children?: ReactNode;
+  className?: string;
 }
-export default function Card({title,description,image,children,className=''}:CardProps) {
+
+export default function Card({
+  title,
+  description,
+  image,
+  children,
+  className = "",
+}: CardProps) {
   return (
-    <div className={cn('!p-4 bg-background-secondary rounded-2xl shadow-xl flex flex-col  md:flex-row  gap-5 justify-between items-center',className)}>
-<div className='flex flex-col gap-2 order-2 md:order-0 bg-background w-full md:w-2/3'>
-    <p className='text-2xl font-semibold text-primary'>{title}</p>
-    <p className='text-text-secondary text-md'>{description}</p>
-    {children}
-</div>
-{image&&
-<div className='w-full md:w-1/3 order-1'>
-<img src={image} alt="card image" className='object-cover rounded-xl !h-full' />
+    <article
+      className={cn(
+        "flex h-full flex-col overflow-hidden rounded-2xl bg-background shadow-lg transition-shadow duration-300 hover:shadow-xl",
+        className
+      )}
+    >
+      {image && (
+        <div className="h-52 w-full overflow-hidden">
+          <img
+            src={image}
+            alt={title}
+            className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
+          />
+        </div>
+      )}
 
-</div>
-}
+      <div className="flex flex-1 flex-col gap-3 !p-5">
+        <h2 className="text-xl font-semibold text-primary">
+          {title}
+        </h2>
 
+        <p className="text-sm leading-6 text-text-secondary">
+          {description}
+        </p>
 
-    </div>
-  )
+        {children && <div className=" !pt-3">{children}</div>}
+      </div>
+    </article>
+  );
 }
