@@ -12,7 +12,7 @@ export default function MainLayout() {
       if(isLoggedIn)
         return
       navigate(routes.LOGIN)
-    },[])
+    },[isLoggedIn])
   return (
     <div>
       <Navbar />
