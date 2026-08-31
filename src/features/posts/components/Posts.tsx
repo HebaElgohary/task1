@@ -17,8 +17,11 @@ export default function Posts() {
   if (isLoading) {
     return (
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
-        {Array.from({ length: 8 }).map(() => (
+        {Array.from({ length: 8 }).map((_,idx) => (
+          <div key={idx}>
           <CardSkeleton  />
+
+          </div>
         ))}
       </div>
     );

@@ -6,7 +6,9 @@
             "about":"About",
             "contact":"Contact"
         },
-        "loginBtn":"Login"
+        "loginBtn":"Login",
+        "logoutBtn":"Logout"
+
     },
     "login":{
         "title":"Login Form",

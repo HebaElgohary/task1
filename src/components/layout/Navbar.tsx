@@ -5,13 +5,21 @@ import { routes } from "../../constants/routes";
 import { NavLink } from "react-router-dom";
 import i18n from "../../i18n/config";
 
+import { useAppDispatch } from "../../hooks/usAppDispatch";
+import { useAppSelector } from "../../hooks/useAppSelector";
+import { logout } from "../../store/auth.slice";
+
 export default function Navbar() {
   const { t } = useTranslation("translation");
+  const dispatch=useAppDispatch()
+  const isLoggedIn=useAppSelector((state)=>state.auth.isAuthenticated)
   const list = [
     { id: 0, path: routes.HOME, name: t("header.list.home") },
     { id: 1, path: routes.ABOUT, name: t("header.list.about") },
     { id: 2, path: routes.CONTACT, name: t("header.list.contact") },
   ];
+
+
 
     const changeLanguage = () => {
     const newLanguage = i18n.language === "en" ? "ar" : "en";
@@ -22,7 +30,10 @@ export default function Navbar() {
     useEffect(() => {
     document.documentElement.dir = i18n.language === "ar" ? "rtl" : "ltr";
   }, [i18n.language]);
-  return (
+  const handleLogout=()=>{
+dispatch(logout())
+  }
+      return (
     <header className="flex flex-row justify-between !p-5 !px-11 gap-11">
       <h1 className="text-3xl font-semibold">{t("header.logo")}</h1>
       <nav className="flex justify-between gap-11 items-center ">
@@ -40,7 +51,7 @@ export default function Navbar() {
           {i18n.language === "en" ? "Ar" : "En"}
         </Button>
         <NavLink to={routes.LOGIN}>
-          <Button>{t("header.loginBtn")}</Button>
+          <Button onClick={handleLogout}>{isLoggedIn?t("header.logoutBtn"):'loginBtn'}   </Button>
         </NavLink>
       </nav>
     </header>

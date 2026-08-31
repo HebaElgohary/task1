@@ -12,7 +12,7 @@ export default function About() {
     <>
  <section className="min-h-[85vh] bg-background-secondary !px-5 !pt-6 md:!px-11 lg:!px-22">
   <div className="flex flex-col gap-3">
-    <Title>{t("about.title")}</Title>
+      <Title className='!pt-11 text-center'>{t('about.title')}</Title>
 
     <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-4">
       <Card

@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <>
     <section className='flex flex-col   !px-5 md:!px-11 lg:!px-22 min-h-[85vh] bg-background-secondary' >
-      <Title>{t('home.title')}</Title>
+      <Title className='!pt-11 text-center'>{t('home.title')}</Title>
 
 <h2 className='text-xl text-secondary font-semibold !mt-11'> Posts </h2>
     <Posts />

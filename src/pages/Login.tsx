@@ -1,4 +1,4 @@
-import React, { useState, type ChangeEvent, type SubmitEvent } from "react";
+import React, { useEffect, useState, type ChangeEvent, type SubmitEvent } from "react";
 import Label from "../components/ui/Label";
 import { useTranslation } from "react-i18next";
 import Title from "../components/ui/Title";
@@ -10,15 +10,18 @@ import { useAppSelector } from "../hooks/useAppSelector";
 import type { RootState } from "../store/auth.store";
 import { useAppDispatch } from "../hooks/usAppDispatch";
 import { login } from "../store/auth.slice";
+import { useNavigate } from "react-router-dom";
+import { routes } from "../constants/routes";
 
 export default function Login() {
   const { t } = useTranslation("translation");
-
+  const navigate = useNavigate();
+       type errorstype= Partial<IFormData>
 
   const [formData,setFormData]=useState<IFormData>({email:'',password:''})
-  const [errors,setErrors]=useState<IFormData>({email:'',password:''})
-    // const user=  useAppSelector((state:RootState)=>state.auth.user)
-    const isLogged=  useAppSelector((state:RootState)=>state.auth.isAuthenticated)
+  const [errors,setErrors]=useState<errorstype>()
+    const user=  useAppSelector((state:RootState)=>state.auth.user)
+    // const isLogged=  useAppSelector((state:RootState)=>state.auth.isAuthenticated)
     const dispatch=useAppDispatch()
   const handleSubmit=(e:SubmitEvent<HTMLFormElement>)=>{
       e.preventDefault();
@@ -29,12 +32,17 @@ export default function Login() {
  
   }
   else{
-    dispatch(login({...formData,id:String(new Date())}))
+    dispatch(login({...formData,id:globalThis.crypto.randomUUID()}))
+    navigate(routes.HOME);
     
   }
 
 
   }
+  //persist Redux state
+  useEffect(()=>{
+    localStorage.setItem('user',JSON.stringify(user))
+  },[user])
 
   const changeHandler=(e:ChangeEvent<HTMLInputElement>)=>{
 
@@ -54,20 +62,20 @@ export default function Login() {
           <Label className="self-start">{t("login.emailLabel")}</Label>
           <Input type="email" name="email" value={formData.email} onChange={(e)=>changeHandler(e)} />
         </div>
-          <p className="text-red-800 flex justify-end">{errors.email}</p>
+          <p className="text-red-800 flex justify-end">{errors?.email}</p>
 
         {/* ------------------------- */}
         {/* -----------password-------------- */}
 
         <div className="flex gap-5 !mt-6 items-center justify-between">
           <Label>{t("login.passwordLabel")}</Label>
-          <Input type="password" name="password" onChange={(e)=>changeHandler(e)} />
+          <Input type="password" name="password" value={formData.password} onChange={(e)=>changeHandler(e)} />
         </div>
-          <p className="text-red-800 flex justify-end ">{errors.password}</p>
+          <p className="text-red-800 flex justify-end ">{errors?.password}</p>
 
         {/* ------------------------- */}
 
-        <Button className="self-start" type="submit" >
+        <Button className="self-start" type="submit"  >
           {t("login.loginBtn")} 
         </Button>
       </form>

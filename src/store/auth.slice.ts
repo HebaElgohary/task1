@@ -11,9 +11,10 @@ type AuthState = {
   isAuthenticated: boolean;
 };
 
-const initialState: AuthState = {
-  user: null,
-  isAuthenticated: false,
+const storedUser = localStorage.getItem("user");
+const initialState:AuthState = {
+  user: storedUser ? JSON.parse(storedUser) : null,
+  isAuthenticated: !!storedUser,
 };
 
 const authSlice = createSlice({
@@ -26,6 +27,7 @@ const authSlice = createSlice({
       state.user = action.payload;
       state.isAuthenticated = true;
     },
+
 
     logout: (state) => {
       state.user = null;

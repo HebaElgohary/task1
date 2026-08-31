@@ -7,7 +7,7 @@ interface TitleProps{
 }
 export default function Title({children,className}:TitleProps) {
   return (
-<h1 className={cn('text-2xl text-primary ',className)}>{children}</h1>
+<h1 className={cn('text-3xl text-primary font-semibold ',className)}>{children}</h1>
 
   )
 }
